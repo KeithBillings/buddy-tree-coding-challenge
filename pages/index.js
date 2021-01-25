@@ -4,6 +4,7 @@ import Link from "next/link";
 
 // components
 import List from "../components/List";
+import Header from "../components/Header";
 
 // material-ui
 import { useTheme } from "@material-ui/core/styles";
@@ -16,8 +17,6 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 
-// auth
-// import { GitHub } from "next-auth/providers";
 
 export default function Home() {
   const theme = useTheme();
@@ -28,6 +27,7 @@ export default function Home() {
       <Head>
         <title>Keith Billings</title>
       </Head>
+      <Header />
       <Grid
         container
         spacing={1}
@@ -61,7 +61,7 @@ export default function Home() {
               Mapping Over Example Data From An API
             </Typography>
           </Grid>
-          <List/>
+          <List />
         </Grid>
       </Grid>
     </div>
