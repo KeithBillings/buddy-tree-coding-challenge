@@ -1,14 +1,12 @@
 import { useState, useEffect } from "react";
 
+import Link from "next/link";
+
+// material-ui
 import { makeStyles } from "@material-ui/core/styles";
-import AppBar from "@material-ui/core/AppBar";
-import Toolbar from "@material-ui/core/Toolbar";
-import Typography from "@material-ui/core/Typography";
-import IconButton from "@material-ui/core/IconButton";
+import { AppBar, Toolbar, Typography, IconButton } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-
-// auth
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -31,20 +29,19 @@ export default function MenuAppBar() {
           <Typography variant="h6" style={{ flexGrow: 1 }}>
             Home
           </Typography>
-          {
-            <div>
+          <Link href="/api/auth/signin">
+            {
               <IconButton
                 aria-label="account of current user"
                 aria-controls="menu-appbar"
                 aria-haspopup="true"
-                onClick={handleLogin}
                 color="inherit"
               >
-                {auth ? <Typography> Login </Typography> : `${profileName}`}
+                {auth ? `${profileName}` : <Typography> Login </Typography>}
                 <AccountCircle style={{ margin: "0.5rem" }} />
               </IconButton>
-            </div>
-          }
+            }
+          </Link>
         </Toolbar>
       </AppBar>
     </div>

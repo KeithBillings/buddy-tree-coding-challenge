@@ -17,7 +17,6 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 
-
 export default function Home() {
   const theme = useTheme();
   const { margin: loremMargin } = theme.lorem;
