@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 
 import Link from "next/link";
+import { signIn, signOut, useSession } from "next-auth/client";
 
 // material-ui
 import { makeStyles } from "@material-ui/core/styles";
@@ -14,34 +15,46 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function MenuAppBar() {
+export default function Header() {
+  const [session] = useSession();
   const classes = useStyles();
-
-  const [auth, setAuth] = useState(false);
-  const [profileName, setProfileName] = useState("");
-
-  const handleLogin = () => {};
 
   return (
     <div className={classes.root}>
       <AppBar position="fixed">
         <Toolbar>
-          <Typography variant="h6" style={{ flexGrow: 1 }}>
-            Home
-          </Typography>
-          <Link href="/api/auth/signin">
-            {
-              <IconButton
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                color="inherit"
-              >
-                {auth ? `${profileName}` : <Typography> Login </Typography>}
-                <AccountCircle style={{ margin: "0.5rem" }} />
-              </IconButton>
-            }
+          <Link href="/">
+            <Typography variant="h6" style={{ flexGrow: 1 }}>
+              <IconButton color="inherit">Home</IconButton>
+            </Typography>
           </Link>
+          <IconButton color="inherit">
+            {session ? (
+              <>
+                <Typography onClick={signOut}>
+                  Welcome {session.user.name}
+                </Typography>
+                {session.user.image && (
+                  <img
+                    onClick={signOut}
+                    src={session.user.image}
+                    style={{
+                      width: "25px",
+                      borderRadius: "50%",
+                      margin: "0.5rem",
+                    }}
+                  />
+                )}
+              </>
+            ) : (
+              <>
+                <Typography onClick={() => signIn("github")}>
+                  Login With Github
+                </Typography>
+                <AccountCircle style={{ margin: "0.5rem" }} />
+              </>
+            )}
+          </IconButton>
         </Toolbar>
       </AppBar>
     </div>
