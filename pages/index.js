@@ -2,6 +2,9 @@ import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 
+// components
+import List from "../components/List";
+
 // material-ui
 import { useTheme } from "@material-ui/core/styles";
 import {
@@ -13,8 +16,8 @@ import {
   ThemeProvider,
 } from "@material-ui/core";
 
-// example api
-import loremData from "./api/loremData";
+// auth
+// import { GitHub } from "next-auth/providers";
 
 export default function Home() {
   const theme = useTheme();
@@ -58,18 +61,7 @@ export default function Home() {
               Mapping Over Example Data From An API
             </Typography>
           </Grid>
-          {loremData.map((ipsum, index) => {
-            return (
-              <Grid key={index} item id="lorem" style={{ margin: loremMargin }}>
-                <Typography key={index} variant="h6">
-                  <Link href={`/exampleroute/${index}`}>
-                    <a>Click for example route {index}</a>
-                  </Link>
-                </Typography>
-                {ipsum}
-              </Grid>
-            );
-          })}
+          <List/>
         </Grid>
       </Grid>
     </div>
