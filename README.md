@@ -1,3 +1,13 @@
+## Description
+
+A coding challenge I did for a startup called BuddyTree. For this challenged I was told to build a single page application using Next.js, Material-ui, and authenticate the user through GitHub in under 3 days.
+
+## Deployment
+
+https://buddy-tree-coding-challenge.vercel.app/
+
+#
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
